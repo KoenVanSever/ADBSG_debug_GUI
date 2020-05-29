@@ -1,0 +1,104 @@
+Usage:
+  help - get help
+  exit - exits the terminal
+  reset - Do reset
+  tmsg - sets text message printout
+  setled1 - sets led1 pwm [0..4096]
+  setled1lin - sets led1 linear pwm [0..4096] 395 = 2500mA, 1874 = 1500mA
+  setled2 - sets led2 pwm [0..4096]
+  setled2lin - sets led2 linear pwm [0..4096]
+  setpip - sets PI-term P [0..1000, default 100]
+  setpii - sets PI-term I [0..1000, default 0]
+  setkc - sets kCoeff value [100..50000]
+  commit - saves parameters to flash memory
+  setADCoffset - Set ADC offset for current measurement <0..4096>
+  setEMCdither - Set setEMCdither <0..1>
+  setrl - Set virtual resistance lock <0..1>
+  setPWMP - Set fixed PWM <0..65535>
+  getAWsamples - DBG: Get samples used by Anti-Windup
+  erasePID - clear production ID (PID)
+  setPID - set production ID (PID) <YYWWPPSSNNNNN>
+  getPID - get production ID (PID)
+  params - set/get (incl flash mem) ASP params <param> [<value>]
+  ticks - prints ASP tick settings
+  asp - controls asp {on|off}
+  setlms - set LMS status [0..2]
+  tx - sends symbol [0..7]
+  rx - receives ASP symbol(s) <count> [<power>]
+  th - set rx threshold [1..9999]
+  sendbit - sends bit with freq [1..63]
+  setint2A - sets 2A intensity <lamp_ix> <current>
+  setpwmmin - sets FET PWM min value [0..250]
+  setadcpos - sets adc0 sampling position [1..50]
+  setdcvolt - sets dc voltage [10..50]
+  feedforward - sets feedforward koefficient total ledpower*k/8 (32 as default)
+  feedforwardOFF - sets feedforward idle (25000 as default)
+  setAR - sets AR-coefficient (x256) in AR filter (0-256)
+  setPowerRes - sets power resistor pwm in 0-100% (limited to 5W). 0 - disable
+  setTt - sets Tt param in PID (10 as default)
+  setnomsat - sets e_satnom (<=0) param in LED-power limiter (-100 as default)
+  setTp - sets Tp param in LED-power limiter (10 as default)
+  setmisc - sets misc param
+  setboostcorrection - sets power_correction in percent(107 as default)
+  setintuidiffthreshold - sets intuidiff_treshold default 200
+  setpwmfilt - sets pwm ctrl filter [0,1,2]
+  setpll - sets PLL period [1..65535] ticks
+  recvtest - receive loopback test
+  taskinfo - Print task info
+  clrerrors - Clear error bits
+  readcputemp - Read CPU temperature
+  readvolt - Read 2.5, 3.3, 10V and DC+ voltages
+  capmem - Set(1)/clear(0) mem_out-pin. No args: show cap.voltage
+  getccr - Shows line frequency, CF, and current
+  pfc - Set(1)/clear(0) PFC shunting, and Led power limit (=0 for DC supply). No args: show status
+  arect - Set(1)/clear(0) Active diode (=0 for passive diodes). No args: show status
+  readi2c - read from i2c <i2c channel> <i2c address> <mem address> <num bytes>
+  reseti2c - reset I2C bus <i2c channel>
+  ledinfo - <LED ident mask> <info sel> [<repeat>]. Prints LED information use "ledinfo help" for more information
+  setledovr - set CCR RMS Current override for LED control (in mA) <LED ident mask> <current [0..65535]>
+  setledovr2 - set LED Current override for LED control (in mA) <LED ident mask> <current [0..65535]>
+  ledcalib - calibrate LED current <LED ident mask> 1 = A0, 2 = A1, 4 = B0, 8 = B1
+  pwminfo - Print current PWM info.
+  setleddimrate - sets the LED dimming rate <LED ident mask> [1 = A0, 2 = A1, 4 = B0, 8 = B1] <NUMERATOR> <DENOMINATOR>
+  setleddimmin - sets the LED dimming minimum rate <LED ident mask> [1 = A0, 2 = A1, 4 = B0, 8 = B1] <NUMERATOR> <DENOMINATOR>
+  setledlimit - sets a LED current limit (in mA) <LED ident mask> [1 = A0, 2 = A1, 4 = B0, 8 = B1] <LIMIT>
+  setledfaillimit - sets a LED-monitoring current limit (in mA) <LED ident mask> [1 = A0, 2 = A1, 4 = B0, 8 = B1] <LIMIT>
+  setldovr - Set min LD override <LED ident mask> [1 = A0, 2 = A1, 4 = B0, 8 = B1] <LD-MIN mA>
+  setledfreq - Set LED PWM Frequency <Value in Hz>
+  setledstatus - Set LED Status <LED ident mask> <LED status> (1 = ON, 2 = shorted, 4 = open)
+  getledstatus - Get LED Status <LED ident mask>
+  gethpledStatus - Get LED Status A,B,C
+  ledena - Set LED Enable A,B,C <1/0>
+  ledtest - Selftest on ABC LEDs
+  testledblink - Toggle LEDs <LED ident mask> <type>
+  setledpwm - Sets LED pwm (use pwminfo to get PWM_RES.)<LED index [0-4]> <Value [PWM_RES-0]> <Enable [1, 0]>
+  setcalibpwm - Sets Calibration pwm (use pwminfo to get RES.) <LED index [0-4]> <Value [PWM_RES-0]> <Enable [1, 0]>
+  setvoltagepwm - Sets Led driver voltage pwm (use pwminfo to get RES.) <LED index [0-2]> <Value [PWM_RES-0]> <Enable [1, 0]>
+  setledvoltage - Sets Led driver voltage, for voltage controlled output <LED index [0..2]> <Voltage [0..50]> <Enable [1, 0]>
+  ledinactivate - Inactivate LED <LED ident mask>
+  hwrev - Print hardware revision.
+  shortcheck - Select short circuit channel <CHANNEL [0-2]>
+  ledpower - Read LED power <LED ident mask>
+  setTXpower - Set TXpower for ASP <1..8>
+  setTXoffset - Set TX offset for ASP <0..240>
+  setboardtempovr - Set LED board temperature override <LED ident mask> <temp> <ENABLE>
+  setmult - Set LED fast-dimming multipliers <nominal multiplier> <fast multiplier>
+  read_fram - Read from FRAM memory <address> <num bytes>
+  write_fram - Write to FRAM memory <address> <num bytes> <byte 1> ...<byte n>
+  read_fram_st - Read status from FRAM memory
+  write_fram_st - Write status to FRAM memory <status>
+  up - Show total uptime
+  read_log - Show log info. (use no arg for help) <index> (<day-time format>) (<skip zero>)
+  clear_log - Clear all log data. <password>
+  df_log - Show log memory usage.
+  open - open terminal.
+  close - close terminal.
+  passwd - enter user/admin level. (use no arg for exiting level)
+  getCCRcurrent - Read CCR current
+  caliboffs - Calibrate offset
+  calibCCRlo - Calibrate CCR current low point
+  calibCCRhi - Calibrate CCR current high point
+  calibCCRsave - Save CCR calibration parameters, confirm with arg "yes"
+  fw_info - Get firmware info
+  fw_update - Upload new firmware (ymodem).
+  read_flash - Read from flash memory <address> <num bytes>

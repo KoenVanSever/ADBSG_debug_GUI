@@ -1,0 +1,57 @@
+
+/* 
+#ADB_blue : #004c5e
+#ADB_oranges : #e95b0b, #ed7103, #f49b01, #f8b123 
+*/
+
+box {
+    background: #004C5E;
+    border-color: #004C5E;
+}
+
+label {
+    color: #FFFFFF;
+}
+
+button {
+    color: #FFFFFF;
+    background: #F8B123;
+}
+
+.notebook_label {
+    color: #000000;
+}
+
+.button_general {
+    background: #444444;
+}
+
+.button_ccr {
+    background: #F28888;
+}
+
+.button_led {
+    background: #88B388;
+}
+
+.button_asp {
+    background: #9388F3;
+}
+
+.main_window_header {
+    color: #FFFFFF;
+    font-size: 1.1em;
+    text-decoration: underline;
+}
+
+.conv_toggle_button {
+    background: #050505;
+}
+
+.conv_toggle_button:checked {
+    background: #F8B123;
+}
+
+#test {
+    color: #000000;
+}
