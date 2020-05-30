@@ -383,9 +383,9 @@ class Handler():
         if int(a2_ent_list[1]) == 0 or int(a2_ent_list[1]) == 1:
             extra = 0
         elif int(a2_ent_list[1]) == 2:
-            extra = 4
+            extra = 5
         else:
-            extra = 8
+            extra = 9
         reps = int(round(int(a2_ent_list[0])/20 + extra, 0))
         data = self._data_stream(0.2, reps if reps != 0 else 1)
         # print_interface(data)
