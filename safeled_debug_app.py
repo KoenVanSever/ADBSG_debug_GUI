@@ -24,6 +24,7 @@ serial_port = None
 ret_answer = None
 term_level = None
 completion = None
+clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
 
 # test serial function --> not used any more
 def test_serial():
@@ -48,6 +49,8 @@ def wait_prod():
 builder = Gtk.Builder()
 builder.add_from_file("data/debug_window_temp.ui")
 window = builder.get_object("DebugWindow")
+pixb = Gtk.Image().new_from_file("data/icon.png").get_pixbuf()
+window.set_icon(pixb)
 window.move(200,50)
 
 #CSS styling of app
@@ -383,16 +386,17 @@ class Handler():
         if int(a2_ent_list[1]) == 0 or int(a2_ent_list[1]) == 1:
             extra = 0
         elif int(a2_ent_list[1]) == 2:
-            extra = 5
+            extra = 7
         else:
-            extra = 9
+            extra = 14
         reps = int(round(int(a2_ent_list[0])/20 + extra, 0))
         data = self._data_stream(0.2, reps if reps != 0 else 1)
         # print_interface(data)
 
         #create rx data class and window to plot calculated data
         rx = asp.Rx(data, {a2_ent_list[0]}, {a2_ent_list[1]}, threshold_level = ALC_THRESHOLD)
-        rx_win = puw.RxWindow(parent = window, title = f"rx {a2_ent} ouput", modal = True)
+        global clipboard
+        rx_win = puw.RxWindow(clipboard, parent = window, title = f"rx {a2_ent} ouput", modal = True)
         rx_win.set_general_text(str(rx))
         pl_50 = rx.plot_adc_data_50_all()
         pl_hf = rx.plot_adc_data_hf_all()
