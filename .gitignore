@@ -1,4 +1,7 @@
+__pycache__
 .vscode/settings.json
 classes/__pycache__
 classes/__pycache__/asp.cpython-38.pyc
-__pycache__
+classes/__pycache__/__init__.cpython-38.pyc
+classes/__pycache__/popupwindow.cpython-38.pyc
+classes/__pycache__/safeserial.cpython-38.pyc

@@ -1,0 +1,1 @@
+This folder contains temporary image changes for whilst the application is running

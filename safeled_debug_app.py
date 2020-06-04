@@ -99,7 +99,7 @@ class Handler():
     def cmd_openport(self, *args):
         global serial_port
         port_s = port_sel.get_text().rstrip()
-        serial_port = sfs.SafeSerial(timeout = 10, port = port_s)
+        serial_port = sfs.SafeSerial(timeout = 2, port = port_s)
         temp = serial_port.get_settings()
         string = str(temp["baudrate"]) + " " + str(temp["bytesize"]) + temp["parity"] + str(temp["stopbits"])
         print_interface(f"Port opened: {serial_port.port} with {string}\n")
@@ -276,6 +276,8 @@ class Handler():
         else:
             serial_port.write_reg(f"ledcalib {l_ent}")
             time.sleep(0.1)
+            if fo_stat.get_active():
+            	serial_port.write_reg("\r")
             print_interface(serial_port.read_print_buffer())
             # !! TODO : incorporate_dialogwindow into new class? --> resolved working, could be better though
             value = ""
