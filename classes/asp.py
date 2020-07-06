@@ -93,6 +93,25 @@ class Rx:
     def plot_adc_data_hf(self, line_nr):
         return self._plot_data(line_nr, self._adc_data_rx, "hf")
 
+    def print_filter_value_50(self):
+        res = []
+        try:
+            y = self._adc_data_50[0][0]
+            for x in range(len(self._adc_data_50[0])):
+                y = round((self._adc_data_50[0][x] * (256-220) + y * 220) / 256, 3)
+                res.append(y)
+        except IndexError: "Something wrong with input"          
+        return res
+
+    def plot_filter_value_50(self):
+        res = [self.print_filter_value_50()]
+        tot = []
+        try:
+            x = self._plot_data(0, res, "filt")
+            tot.append(x)
+        except: Exception("No filter data available")
+        return tot
+
     def plot_adc_data_50_all(self):
         tot = []
         try:
@@ -231,6 +250,7 @@ def main():
         os.remove(x)
     print(rx_2.plot_adc_data_50_all())
     print(rx_2.plot_adc_data_hf_all())
+    print(rx_2.plot_filter_value_50())
     # print(rx_1.plot_adc_data_50_all())
     # print(rx_1.plot_adc_data_hf_all())
     # print(rx_1)

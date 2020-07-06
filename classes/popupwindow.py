@@ -10,6 +10,7 @@ from gi.repository import Gtk
 
 plot_50_nr = 0
 plot_hf_nr = 0
+plot_filter_50_nr = 0
 
 class PopupWindow(Gtk.MessageDialog):
     def __init__(self, *args, **kwargs):
@@ -113,6 +114,17 @@ class RxWindow(Gtk.Dialog):
         vbox_plot_50.pack_end(plot_50_button, False, False, 5)        
         self.notebook.append_page(vbox_plot_50, self.NotebookLabel(label = f"Plot 50Hz {plot_50_nr}"))
         plot_50_nr += 1
+
+    def add_plot_filter_50(self, image_path):
+        global plot_filter_50_nr
+        image_plot_filter_50 = Gtk.Image.new_from_file(image_path)
+        plot_filter_50_button = Gtk.Button(label = "Copy to clipboard")
+        plot_filter_50_button.connect("clicked", self._set_clipboard, self.clipboard, image_plot_filter_50.get_pixbuf())
+        vbox_plot_filter_50 = Gtk.Box(orientation = Gtk.Orientation.VERTICAL, vexpand = True)
+        vbox_plot_filter_50.pack_start(image_plot_filter_50, True, True, 5)
+        vbox_plot_filter_50.pack_end(plot_filter_50_button, False, False, 5)        
+        self.notebook.append_page(vbox_plot_filter_50, self.NotebookLabel(label = f"Plot 50Hz Filter {plot_filter_50_nr}"))
+        plot_filter_50_nr += 1
 
     def add_plot_hf(self, image_path):
         global plot_hf_nr

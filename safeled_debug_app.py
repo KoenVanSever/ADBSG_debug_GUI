@@ -374,6 +374,7 @@ class Handler():
         #reset plot numbers from possible previous runs
         puw.plot_50_nr = 0
         puw.plot_hf_nr = 0
+        puw.plot_filter_50_nr = 0
 
         #send the correct command
         a2_ent = arg2_ent.get_text().rstrip()
@@ -390,7 +391,7 @@ class Handler():
         elif int(a2_ent_list[1]) == 2:
             extra = 7
         else:
-            extra = 14
+            extra = 16
         reps = int(round(int(a2_ent_list[0])/20 + extra, 0))
         data = self._data_stream(0.2, reps if reps != 0 else 1)
         # print_interface(data)
@@ -402,10 +403,13 @@ class Handler():
         rx_win.set_general_text(str(rx))
         pl_50 = rx.plot_adc_data_50_all()
         pl_hf = rx.plot_adc_data_hf_all()
+        pl_filt = rx.plot_filter_value_50()
         for e in pl_50:
             rx_win.add_plot_50(f"{e}.png")
+        for e in pl_filt:
+            rx_win.add_plot_filter_50(f"{e}.png")
         for e in pl_hf:
-            rx_win.add_plot_hf(f"{e}.png")
+            rx_win.add_plot_hf(f"{e}.png")        
         rx_win.show_all()
         rx_win.cancel_button.connect("clicked", lambda a, b: b.destroy(), rx_win)
         rx_win.run()
